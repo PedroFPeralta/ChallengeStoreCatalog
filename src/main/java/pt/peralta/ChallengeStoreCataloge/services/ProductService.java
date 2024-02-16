@@ -45,8 +45,10 @@ public class ProductService {
                 .orElseThrow(ProductNotFoundException::new);
 
         //If Category exist then update
-        categoryService.getById(productDTO.categoryId())
-                .ifPresent(toUpdate::setCategory);
+        if (productDTO.categoryId() != null) {
+            categoryService.getById(productDTO.categoryId())
+                    .ifPresent(toUpdate::setCategory);
+        }
 
         if(!productDTO.title().isEmpty())
             toUpdate.setTitle(productDTO.title());

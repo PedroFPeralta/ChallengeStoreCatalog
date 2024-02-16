@@ -32,13 +32,13 @@ public class CategoryController {
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Category> update(@PathParam("id") String id, @RequestBody CategoryDTO category){
+    public ResponseEntity<Category> update(@PathVariable("id") String id, @RequestBody CategoryDTO category){
         Category toUpdate = this.service.update(id,category);
         return ResponseEntity.ok().body(toUpdate);
     }
 
     @DeleteMapping ("{id}")
-    public ResponseEntity<Category> delete(@PathParam("id") String id){
+    public ResponseEntity<Category> delete(@PathVariable("id") String id){
         this.service.delete(id);
         return ResponseEntity.noContent().build();
     }
