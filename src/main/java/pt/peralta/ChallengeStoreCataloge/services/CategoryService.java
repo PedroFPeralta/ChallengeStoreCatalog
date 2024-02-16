@@ -7,6 +7,7 @@ import pt.peralta.ChallengeStoreCataloge.domain.category.exceptions.CategoryNotF
 import pt.peralta.ChallengeStoreCataloge.repositories.CategoryRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CategoryService {
@@ -44,5 +45,9 @@ public class CategoryService {
         Category toUpdate = this.repository.findById(id).orElseThrow(CategoryNotFoundException::new);
 
         this.repository.delete(toUpdate);
+    }
+
+    public Optional<Category> getById(String id){
+        return this.repository.findById(id);
     }
 }
